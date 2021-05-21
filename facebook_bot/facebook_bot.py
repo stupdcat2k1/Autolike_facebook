@@ -42,4 +42,26 @@ class facebook_bot():
             test.press(Key.enter)
             test.release(Key.enter)
             i+=1
-        print("Đã like xong")
+        print("Đã like xong like1")
+
+    def like2(self):
+        self.driver.get("https://www.fb.com")
+        i = 0
+        random_sleep(5, 7)
+        test = Controller()
+        random_sleep(1, 2)
+        test.press('j')
+        test.release('j')
+        while i <= 5:
+            random_sleep(1, 2)
+            test.press('j')
+            test.release('j')
+            random_sleep(1, 2)
+            test.press('l')
+            test.release('l')
+            random_sleep(1, 2)
+            test.press(Key.enter)
+            test.release(Key.enter)
+            i += 1
+        print("Đã like xong like2")
+        self.driver.close()

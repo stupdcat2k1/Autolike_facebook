@@ -13,3 +13,4 @@ if __name__ == '__main__':
 
     fb = facebook_bot(driver, url, username, password)
     fb.like()
+    fb.like2()
