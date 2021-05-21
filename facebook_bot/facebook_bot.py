@@ -24,7 +24,8 @@ class facebook_bot():
         pass_box = self.driver.find_element_by_id('pass')
         pass_box.send_keys(password)
         random_sleep(1, 5)
-        pass_box.send_keys(Keys.RETURN)
+        login_btn = self.driver.find_element_by_name('login')
+        login_btn.send_keys(Keys.RETURN)
         random_sleep(1,5)
 
     def like(self):
@@ -41,6 +42,7 @@ class facebook_bot():
             random_sleep(1, 2)
             test.press(Key.enter)
             test.release(Key.enter)
+            random_sleep(1, 2)
             i+=1
         print("Đã like xong like1")
 
@@ -62,6 +64,7 @@ class facebook_bot():
             random_sleep(1, 2)
             test.press(Key.enter)
             test.release(Key.enter)
+            random_sleep(1, 2)
             i += 1
         print("Đã like xong like2")
         self.driver.close()
