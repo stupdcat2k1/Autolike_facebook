@@ -11,4 +11,5 @@ if __name__ == '__main__':
     username = config['username']
     password = config['password']
 
-    facebook_bot(driver, url, username, password)
+    fb = facebook_bot(driver, url, username, password)
+    fb.like()
