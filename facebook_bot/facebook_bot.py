@@ -2,17 +2,22 @@ from random import randint
 from time import sleep, time
 
 from selenium import webdriver
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
-from pynput.keyboard import Key,Controller
+from pynput.keyboard import Key, Controller
+
+
 def random_sleep(min_s, max_s):
     sleep(randint(min_s, max_s))
+
+
 class facebook_bot():
     def __init__(self, driver, url, username, password):
         option = Options()
         option.add_argument("----disable-notifications")
         option.add_argument("----disable-infobars")
-        self.driver = webdriver.Chrome(driver,chrome_options=option)
+        self.driver = webdriver.Chrome(driver, chrome_options=option)
         self.driver.maximize_window()
         self.driver.get(url)
         self.login(username, password)
@@ -26,45 +31,36 @@ class facebook_bot():
         random_sleep(1, 5)
         login_btn = self.driver.find_element_by_name('login')
         login_btn.send_keys(Keys.RETURN)
-        random_sleep(1,5)
+        random_sleep(1, 5)
 
     def like(self):
-        i = 0
-        random_sleep(5, 7)
-        test = Controller()
-        while i<=5:
+        random_sleep(3, 5)
+        for i in range(5):
+            ActionChains(self.driver).send_keys("j").perform()
             random_sleep(1, 2)
-            test.press('j')
-            test.release('j')
+            ActionChains(self.driver).send_keys("l").perform()
             random_sleep(1, 2)
-            test.press('l')
-            test.release('l')
+            ActionChains(self.driver).send_keys(Keys.SPACE).perform()
             random_sleep(1, 2)
-            test.press(Key.enter)
-            test.release(Key.enter)
-            random_sleep(1, 2)
-            i+=1
+            ActionChains(self.driver).reset_actions()
+            i += 1
         print("Đã like xong like1")
 
     def like2(self):
         self.driver.get("https://www.fb.com")
         i = 0
-        random_sleep(5, 7)
-        test = Controller()
+        random_sleep(3, 5)
+        ActionChains(self.driver).send_keys("j").perform()
         random_sleep(1, 2)
-        test.press('j')
-        test.release('j')
-        while i <= 5:
+        ActionChains(self.driver).reset_actions()
+        for i in range(5):
+            ActionChains(self.driver).send_keys("j").perform()
             random_sleep(1, 2)
-            test.press('j')
-            test.release('j')
+            ActionChains(self.driver).send_keys("l").perform()
             random_sleep(1, 2)
-            test.press('l')
-            test.release('l')
+            ActionChains(self.driver).send_keys(Keys.SPACE).perform()
             random_sleep(1, 2)
-            test.press(Key.enter)
-            test.release(Key.enter)
-            random_sleep(1, 2)
+            ActionChains(self.driver).reset_actions()
             i += 1
         print("Đã like xong like2")
         self.driver.close()
