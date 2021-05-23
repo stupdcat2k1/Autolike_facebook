@@ -14,4 +14,5 @@ if __name__ == '__main__':
     fb = facebook_bot( url, username, password)
     #fb.like1()
     #fb.like2()
-    fb.likev2()
+    #fb.like3()
+    fb.like4()

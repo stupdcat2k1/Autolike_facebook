@@ -53,11 +53,7 @@ class facebook_bot():
         self.driver.get("https://www.facebook.com/")
         test = Controller()
         random_sleep(2,3)
-        for i in range(5):
-            if (i == 0):
-                test.press('j')
-                test.release('j')
-                random_sleep(1, 2)
+        for i in range(1,5):
             test.press('j')
             test.release('j')
             random_sleep(1, 2)
@@ -69,8 +65,8 @@ class facebook_bot():
             random_sleep(1, 2)
             print("Đã like bài thứ: ", i+1)
 
-    def likev2(self):
-        self.driver.execute_script("window.scrollTo(0, 990);")
+    def likev3(self):
+        self.driver.execute_script("window.scrollTo(0, 937);")
         random_sleep(4, 5)
         likes = self.driver.find_elements_by_xpath("//div[@class='tvfksri0 ozuftl9m']//div[@aria-label='Thích']")
         print(len(likes))
@@ -86,3 +82,22 @@ class facebook_bot():
             action.reset_actions()
             random_sleep(2,2)
         print("Đã chạy xong v2")
+
+    def like4(self):
+        self.driver.get("https://www.facebook.com/")
+        self.driver.execute_script("window.scrollTo(0, 937);")
+        random_sleep(4, 5)
+        likes = self.driver.find_elements_by_xpath("//div[@class = 'tvfksri0 ozuftl9m']//span[text() = 'Thích']")
+        print(len(likes))
+        action = ActionChains(self.driver)
+        random_sleep(1, 2)
+        for i in range(1,len(likes)):
+            action.move_to_element(likes[i]).perform()
+            random_sleep(1, 2)
+            self.driver.execute_script("arguments[0].click();", likes[i])
+            random_sleep(1, 2)
+            print("Đã like bài ", i + 1)
+            random_sleep(1, 2)
+            action.reset_actions()
+            random_sleep(2, 2)
+        print("Đã chạy xong ")
