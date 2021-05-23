@@ -6,6 +6,7 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from pynput.keyboard import Key, Controller
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 def random_sleep(min_s, max_s):
@@ -13,11 +14,11 @@ def random_sleep(min_s, max_s):
 
 
 class facebook_bot():
-    def __init__(self, driver, url, username, password):
+    def __init__(self, url, username, password):
         option = Options()
         option.add_argument("----disable-notifications")
         option.add_argument("----disable-infobars")
-        self.driver = webdriver.Chrome(driver, chrome_options=option)
+        self.driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=option)
         self.driver.maximize_window()
         self.driver.get(url)
         self.login(username, password)
